@@ -1,1 +1,1 @@
-# FL-12
+# FL-12 online course
