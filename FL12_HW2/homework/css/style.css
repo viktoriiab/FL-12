@@ -1,3 +1,16 @@
+section{
+    position: relative;
+}
+section::before {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    border: 18px solid transparent; 
+    border-left: 18px solid #87cefa; 
+    border-top: 18px solid #87cefa;
+
+}
 .tm-main-nav ul li a:hover{
     background-color: #87cefa;
     color: #fff;
@@ -11,9 +24,35 @@
 .tm-banner-text{
     position: relative;
     text-shadow: 4px 5px 3px #333;
-    animation: bannermove 5s infinite;
+    animation: bannermove 5s infinite; 
 }
 @keyframes bannermove {
     from {left: 200px;}
     to {left: 0px}
   }
+#home ~ section .tm-content-box{
+    display: flex;
+    text-align: center;
+}
+.boxes.gallery-container .box.box-bg:hover{
+    background-color: #d3d3d3;
+}
+.padding-medium h2{
+    text-align: center;
+    color: #87cefa;
+}
+.padding-medium ol{
+    list-style-type: lower-alpha;
+}
+.padding-medium ol li a:hover:before{
+    content: ">";
+}
+.padding-medium ol li:first-child:after,
+.padding-medium ol li:nth-child(3):after{
+    content : "New";
+    color: #ff0000;
+    vertical-align: super;
+    font-weight: bold;
+    font-variant: all-small-caps;
+    font-size: 12px;
+}
