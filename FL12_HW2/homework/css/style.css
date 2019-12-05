@@ -30,7 +30,7 @@ section::before {
     from {left: 200px;}
     to {left: 0px}
   }
-#home ~ section .tm-content-box{
+#home + section .tm-content-box{
     display: flex;
     text-align: center;
 }
@@ -55,4 +55,32 @@ section::before {
     font-weight: bold;
     font-variant: all-small-caps;
     font-size: 12px;
+}
+.blocks{
+    background-color: #fff;
+}
+.blocks h2.tm-section-title{
+    text-align: left;
+}
+.blocks .tm-team-description-container 
+p.tm-section-description:nth-child(2){
+    text-indent: 25px;
+}
+ .blocks .tm-team-description-container 
+ p.tm-section-description:nth-child(3){
+    letter-spacing: 5px;
+    word-spacing: 10px;
+    font-style: italic;
+}
+.tm-content-box ul li.box.box-work{
+    padding: 10px;
+}
+.tm-content-box ul li.box.box-work:hover{
+    background-color: #87cefa;
+}
+.tm-content-box ul li.box.box-work div p{
+    font-style: italic;
+}
+.tm-content-box ul li.box.box-work div p:first-letter{
+    font-weight: bold;
 }
