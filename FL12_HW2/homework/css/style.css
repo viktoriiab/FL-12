@@ -1,0 +1,19 @@
+.tm-main-nav ul li a:hover{
+    background-color: #87cefa;
+    color: #fff;
+}
+.tm-banner{
+    background: linear-gradient(0.25turn, #87cefa, #deb887 );;
+}
+.tm-banner-inner{
+    background-color: #fff;
+}
+.tm-banner-text{
+    position: relative;
+    text-shadow: 4px 5px 3px #333;
+    animation: bannermove 5s infinite;
+}
+@keyframes bannermove {
+    from {left: 200px;}
+    to {left: 0px}
+  }
