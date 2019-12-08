@@ -1,3 +1,58 @@
+@media print{
+
+    *:before, *:after, 
+    nav, form, .tm-team-img,
+    section:last-of-type,
+    .boxes, .carousel-indicators,
+    .img-contact-us, div#contact
+    {
+        display: none;
+    }
+    h2{
+        font-weight: 100;
+        text-transform: uppercase;
+    }
+    .tm-main-content,
+    .tm-content-box,
+    .tm-banner,
+    .padding-medium, 
+    .tm-team-description-container,
+    .carousel {
+        margin: 0;
+        padding: 0;
+        max-width: 100%;
+        margin: auto;
+    }
+    
+    .tm-banner{
+        margin-bottom: 15px;
+    }
+    .flex-item {
+        padding: 0 15px;
+    }
+    ol{
+        padding: 0% 25% 0% 25%;
+    }
+    ol li{
+        list-style: none;
+        display: block;  
+        clear: both;    
+    }
+    ol li:nth-child(odd){
+        float: right; 
+    }
+    .blocks .tm-team-description-container h2.tm-section-title{
+        text-align: center;
+    }
+    .tm-team-description-container{
+        text-align: center;
+        padding: 2% 5% 0% 5%;
+    }
+    .carousel-content{
+        padding: 3% 3% 0% 3%;
+    } 
+}
+
 section{
     position: relative;
 }
@@ -10,6 +65,9 @@ section::before {
     border-left: 18px solid #87cefa; 
     border-top: 18px solid #87cefa;
 
+}
+.tm-main-nav, #home, section{
+    box-shadow: 0 0 10px rgba(61, 55, 61, 0.7);
 }
 .tm-main-nav ul li a:hover{
     background-color: #87cefa;
@@ -101,12 +159,12 @@ textarea#contact_message{
     background: url(../img/email-icon.png) no-repeat right bottom content-box;
     background-size: 31px;
 }
+textarea#contact_message:focus{
+    box-shadow: none;
+}
 form.contact-form input:focus{
     background-color: #87cefa;
 }
-/*.tm-main-nav, .block{
-    box-shadow: 1px rgba(61, 55, 61, 0.7);
-}*/
 form.contact-form .btn-primary{
     color: #87cefa;
     background-color: transparent;
