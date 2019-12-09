@@ -1,16 +1,15 @@
 @media print{
-
     *:before, *:after, 
     nav, form, .tm-team-img,
     section:last-of-type,
     .boxes, .carousel-indicators,
-    .img-contact-us, div#contact
-    {
+    .img-contact-us, div#contact{
         display: none;
     }
     h2{
         font-weight: 100;
         text-transform: uppercase;
+        padding-top: 20px;
     }
     .tm-main-content,
     .tm-content-box,
@@ -18,39 +17,27 @@
     .padding-medium, 
     .tm-team-description-container,
     .carousel {
-        margin: 0;
+        margin: 0 auto;
         padding: 0;
         max-width: 100%;
-        margin: auto;
     }
-    
-    .tm-banner{
-        margin-bottom: 15px;
-    }
-    .flex-item {
-        padding: 0 15px;
+    .carousel-content, .tm-team-description-container{
+        padding: 0% 5%;
+        text-align: center;
     }
     ol{
-        padding: 0% 25% 0% 25%;
+        padding: 0% 28%;
     }
     ol li{
         list-style: none;
-        display: block;  
-        clear: both;    
+        clear: both; 
     }
     ol li:nth-child(odd){
-        float: right; 
+        float: right;
     }
     .blocks .tm-team-description-container h2.tm-section-title{
         text-align: center;
     }
-    .tm-team-description-container{
-        text-align: center;
-        padding: 2% 5% 0% 5%;
-    }
-    .carousel-content{
-        padding: 3% 3% 0% 3%;
-    } 
 }
 
 section{
@@ -74,7 +61,7 @@ section::before {
     color: #fff;
 }
 .tm-banner{
-    background: linear-gradient(0.25turn, #87cefa, #deb887 );;
+    background: linear-gradient(0.25turn, #87cefa, #deb887);
 }
 .tm-banner-inner{
     background-color: #fff;
@@ -89,15 +76,23 @@ section::before {
     to {left: 0px}
 }
 #home + section div.tm-content-box{
-    display: flex;
+    display: flex;    
     text-align: center;
 }
-.boxes.gallery-container .box.box-bg:hover{
-    background-color: #d3d3d3;
-    color: #87cefa;
+#about .boxes.gallery-container{
+    width: 100%;
 }
 .padding-medium h2{
     text-align: center;
+    color: #87cefa;
+}
+p.tm-section-description{
+    text-align: left;
+    text-indent: 25px;  
+}
+.boxes.gallery-container .box.box-bg:hover{
+    background-color: #d3d3d3;
+    font-style: italic;
     color: #87cefa;
 }
 .padding-medium ol{
@@ -115,9 +110,6 @@ section::before {
     font-variant: all-small-caps;
     font-size: 12px;
 }
-.blocks{
-    background-color: #fff;
-}
 .blocks h2.tm-section-title{
     text-align: left;
 }
@@ -131,23 +123,25 @@ p.tm-section-description:nth-child(2){
     word-spacing: 10px;
     font-style: italic;
 }
-.tm-content-box ul.boxes.gallery-container li{
+.blocks .tm-content-box ul.boxes.gallery-container li{
     padding: 10px;
 }
-section.blocks .tm-content-box ul.boxes.gallery-container li:nth-child(odd){
+.blocks .tm-content-box ul.boxes.gallery-container li:nth-child(odd){
     background-color: #87cefa;
+    color: #fff;
 }
 .tm-content-box ul li.box.box-work div p{
     font-style: italic;
 }
-.tm-content-box ul li.box.box-work div p:first-letter{
+ul.boxes.gallery-container li p:first-letter{
     font-weight: bold;
 }
-.tm-section-description.carousel-description{
+.carousel-content p.tm-section-description{
     line-height: 30px;
+    text-align: center;
     text-indent: 25px;
 }
-section.tm-content-box #contact h2.tm-section-title{
+#contact h2.tm-section-title{
     text-align: left;
 }
 form.contact-form .form-group:not(textarea) input{
@@ -159,9 +153,6 @@ textarea#contact_message{
     background: url(../img/email-icon.png) no-repeat right bottom content-box;
     background-size: 31px;
 }
-textarea#contact_message:focus{
-    box-shadow: none;
-}
 form.contact-form input:focus{
     background-color: #87cefa;
 }
@@ -171,8 +162,4 @@ form.contact-form .btn-primary{
     border-color: #87cefa;
     padding: 15px 25px;
     float: right;
-}
-form.contact-form .btn-primary:hover{
-    background-color: #87cefa;
-    color: #fff;
 }
