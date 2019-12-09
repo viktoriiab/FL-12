@@ -1,4 +1,4 @@
-@media print{
+@media print{ 
     *:before, *:after, 
     nav, form, .tm-team-img,
     section:last-of-type,
@@ -9,21 +9,21 @@
     h2{
         font-weight: 100;
         text-transform: uppercase;
-        padding-top: 20px;
+        padding-top: 5px;
     }
     .tm-main-content,
     .tm-content-box,
-    .tm-banner,
-    .padding-medium, 
-    .tm-team-description-container,
-    .carousel {
-        margin: 0 auto;
+    .padding-medium{
         padding: 0;
+        margin: 0 auto;
         max-width: 100%;
     }
-    .carousel-content, .tm-team-description-container{
-        padding: 0% 5%;
+    .tm-team-description-container p.tm-section-description{
         text-align: center;
+        padding: 0px 25px;
+    }
+    .carousel-description{
+        padding: 0px 30px;
     }
     ol{
         padding: 0% 28%;
@@ -48,7 +48,8 @@ section::before {
     content: '';
     top: 0;
     left: 0;
-    border: 18px solid transparent; 
+    border-right: 18px solid transparent;
+    border-bottom: 18px solid transparent;
     border-left: 18px solid #87cefa; 
     border-top: 18px solid #87cefa;
 
@@ -65,6 +66,7 @@ section::before {
 }
 .tm-banner-inner{
     background-color: #fff;
+    color: #666;
 }
 .tm-banner-text{
     position: relative;
@@ -85,6 +87,7 @@ section::before {
 .padding-medium h2{
     text-align: center;
     color: #87cefa;
+    background-color: transparent;
 }
 p.tm-section-description{
     text-align: left;
@@ -109,6 +112,7 @@ p.tm-section-description{
     font-weight: bold;
     font-variant: all-small-caps;
     font-size: 12px;
+    background-color: transparent;
 }
 .blocks h2.tm-section-title{
     text-align: left;
@@ -145,7 +149,9 @@ ul.boxes.gallery-container li p:first-letter{
     text-align: left;
 }
 form.contact-form .form-group:not(textarea) input{
-    border: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
     border-bottom: 1px solid #87cefa;
 }
 textarea#contact_message{
@@ -155,6 +161,7 @@ textarea#contact_message{
 }
 form.contact-form input:focus{
     background-color: #87cefa;
+    color: #55595c;
 }
 form.contact-form .btn-primary{
     color: #87cefa;
