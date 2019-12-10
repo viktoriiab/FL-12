@@ -163,6 +163,9 @@ form.contact-form input:focus{
     background-color: #87cefa;
     color: #55595c;
 }
+form.contact-form textarea:focus{
+    box-shadow: none;
+}
 form.contact-form .btn-primary{
     color: #87cefa;
     background-color: transparent;
