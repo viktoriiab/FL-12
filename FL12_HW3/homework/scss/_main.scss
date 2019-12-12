@@ -19,6 +19,7 @@
 body {
     @include generalSet;
     font-family: map-get($generalFonts, bodyFont);
+    color: map-get($generalColors, mainText);
     line-height: 1;
     background-color: map-get($generalColors, contentBackground);
     main {
@@ -27,7 +28,6 @@ body {
 }
 header{
     font-size: map-get($generalFonts, fontSizeHed);
-    color: map-get($generalColors, headerText);
     background: url($pathImage) no-repeat;
     background-position-y: center;
     height: 720px;
@@ -88,5 +88,46 @@ button{
     font-weight: bold;
     &:hover{
         background-color: map-get($generalColors, highlightColor);
+    }
+}
+.section_text{
+    position: relative;
+    font-size: 45px;
+    font-weight: bold;
+    text-align: center;
+    z-index: 1;
+    &::after{
+        @include highlight(495px,10px,208px,55px);
+    }
+}
+.section_card_wrap{
+    .section_card{
+        display: flex;
+        background-color: #21232e;
+        text-align: center;
+        margin-bottom: 20px;
+        padding: 20px;
+        border-radius: 5px;
+        color: white;
+        img{
+            width: 100%;
+            border-radius: 5px;
+        }
+        .section_card_right_container{
+            padding: 15px 85px 10px 85px;
+            .section_card_heading{
+                font-size:20px;
+                font-weight: bold;
+            }
+            .section_card_text{
+                padding-top: 20px;
+                text-align: justify;
+                color: #c0c3ce;
+                line-height: 1.5;
+            }
+            .section_link{
+                color:#c0c3ce;
+            }
+        }
     }
 }
