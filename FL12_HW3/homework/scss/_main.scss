@@ -23,7 +23,11 @@ body {
     line-height: 1;
     background-color: map-get($generalColors, contentBackground);
     main {
-        @include generalSet($margin: 0 auto, $max-width: 960px)
+        @include generalSet($margin: 0 auto, $max-width: 960px);
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        position: relative;
     }
 }
 header{
@@ -80,7 +84,10 @@ header{
     }
 }
 button{
-    padding: 14px 40px;
+    
+    //padding: 14px 40px;
+    width: 145px;
+    height: 48px;
     background-color: map-get($generalColors, buttonColor);
     border: none;
     border-radius: 3px;
@@ -89,6 +96,9 @@ button{
     &:hover{
         background-color: map-get($generalColors, highlightColor);
     }
+}
+.section_card_wrap{
+    margin-bottom: 180px;
 }
 .section_text{
     position: relative;
@@ -100,34 +110,67 @@ button{
         @include highlight(495px,10px,208px,55px);
     }
 }
-.section_card_wrap{
-    .section_card{
-        display: flex;
-        background-color: #21232e;
-        text-align: center;
-        margin-bottom: 20px;
-        padding: 20px;
+.section_card{
+    display: flex;
+    background-color: #21232e;
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 5px;
+    color: white;
+    img{
+        width: 100%;
         border-radius: 5px;
-        color: white;
-        img{
-            width: 100%;
-            border-radius: 5px;
+    }
+    .section_card_right_container{
+        padding: 15px 85px 10px 85px;
+        .section_card_heading{
+            font-size:20px;
+            font-weight: bold;
         }
-        .section_card_right_container{
-            padding: 15px 85px 10px 85px;
-            .section_card_heading{
-                font-size:20px;
-                font-weight: bold;
-            }
-            .section_card_text{
-                padding-top: 20px;
-                text-align: justify;
-                color: #c0c3ce;
-                line-height: 1.5;
-            }
-            .section_link{
-                color:#c0c3ce;
-            }
+        .section_card_text{
+            padding-top: 20px;
+            text-align: justify;
+            color: #c0c3ce;
+            line-height: 1.5;
+        }
+        .section_link{
+            color:#c0c3ce;
         }
     }
+}
+
+.section_banner{
+    width: 1030px;
+    padding: 15px 25px;
+    display: flex;
+    background: linear-gradient(40deg, #65950e, #2d5bd9);
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 5px;
+    position: absolute;
+    bottom: -60px;
+    .section_banner_heading{
+        font-size: 25px;
+        font-weight: bold;
+        margin-bottom: 0;
+    }
+    .section_banner_text{
+        font-size: 13px;
+        color:#c0c3ce;
+    }
+}
+footer{
+    background-color: #21232e;
+    color:#c0c3ce;
+}
+.footer-wrap{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 240px;
+    padding: 70px 155px 0px 155px;
+}
+.footer_text{
+    width: 330px;
 }
