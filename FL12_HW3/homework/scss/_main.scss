@@ -1,0 +1,92 @@
+@mixin generalSet($margin: 0, $padding: 0, $max-width: 100%){
+    margin: $margin;
+    padding: $padding;
+    max-width: $max-width;
+}
+@mixin highlight($posX, $posY, $width, $height){
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: $width;
+    height: $height;
+    background-color: map-get($generalColors, highlightColor);
+    bottom: $posY;
+    left: $posX;
+}
+*{
+    box-sizing: border-box;
+}
+body {
+    @include generalSet;
+    font-family: map-get($generalFonts, bodyFont);
+    line-height: 1;
+    background-color: map-get($generalColors, contentBackground);
+    main {
+        @include generalSet($margin: 0 auto, $max-width: 960px)
+    }
+}
+header{
+    font-size: map-get($generalFonts, fontSizeHed);
+    color: map-get($generalColors, headerText);
+    background: url($pathImage) no-repeat;
+    background-position-y: center;
+    height: 720px;
+    border-bottom-right-radius: 40%;
+    .header-wrap{
+        @include generalSet($margin: 0px 0px 0px 155px, 
+                            $padding: 15px 0px 0px 0px,
+                            $max-width: 600px);
+        .header_heading{
+            position: relative;
+            font-size: 65px;
+            font-weight: 900;
+            z-index: 1;
+            &::after{
+                @include highlight(0,0,272px,55px);
+            }
+        }
+        .header_text{
+            white-space: pre-line;
+            line-height: 1.5;
+            margin-bottom: 60px;
+        }
+        a.login{
+            margin-left: 150px;
+            color: map-get($generalColors, contentBackground);
+            font-size: 16px;
+            font-weight: 400;
+        }
+    }
+}
+.landing-logo{
+    display: flex;  
+    img{
+        width: 45px;
+        height: 45px;
+        float: left;
+    }
+    p{
+        display: flex;
+        flex-flow: column;
+        text-align: center;
+        @include generalSet($padding: 5px 0px 0px 15px);
+        font-weight: bold;
+        font-size: 20px;
+        span{
+            display: block;
+            font-weight: normal;
+            font-size: 10px;
+        }
+    }
+}
+button{
+    padding: 14px 40px;
+    background-color: map-get($generalColors, buttonColor);
+    border: none;
+    border-radius: 3px;
+    color: map-get($generalColors, contentBackground);
+    font-weight: bold;
+    &:hover{
+        background-color: map-get($generalColors, highlightColor);
+    }
+}
