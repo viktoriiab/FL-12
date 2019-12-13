@@ -55,7 +55,7 @@ header{
     height: 720px;
     border-bottom-right-radius: 40%;
     .header-wrap{
-        margin-left: 155px;
+        margin-left: 130px;
         padding-top: 15px;
         width: 600px;
         .header_heading{
@@ -63,6 +63,8 @@ header{
             @include font-set(65px,900);
             line-height: 1;
             z-index: 1;
+            margin-top: 100px;
+            margin-bottom: 35px;
             &::after{
                 @include highlight-word(0,0,272px,55px);
             }
@@ -71,6 +73,7 @@ header{
             font-family: map-get($generalFonts, fontText);
             white-space: pre-line;
             line-height: 1.5;
+            margin-top: 0px;
             margin-bottom: 60px;
         }
         a.login{
@@ -134,10 +137,10 @@ header{
             @include font-set(20px,bold,map-get($generalColors, sectionHeader));
         }
         .section_card_text{
-            font-family: map-get($generalFonts, fontText);
             padding-top: 20px;
             text-align: justify;
             line-height: 1.5;
+            font-family: map-get($generalFonts, fontText);
         }
         a.section_link{
             @include font-set(14px, 300,map-get($generalColors, subText));
@@ -157,12 +160,13 @@ header{
         @include font-set(25px,bold);
         margin-bottom: 0;
         z-index: 1;
+        font-family: map-get($generalFonts, fontRegular);
         &::after{
             @include highlight-word(100px, 0, 53px,45px);
         }
     }
     .section_banner_text{
-        @include font-set(14px,0,map-get($generalColors, subText));
+        @include font-set(14px,normal,map-get($generalColors, subText));
     }
     .section_banner_button{
         @extend .header_button;
@@ -174,6 +178,7 @@ footer{
     background-color: map-get($generalColors, sectionBackground);
 }
 .footer-wrap{
+    font-family: map-get($generalFonts, fontText);
     @include display-flex($align: center, $content: space-around);
     .footer_logo{
         padding: 100px 0px;
@@ -182,6 +187,5 @@ footer{
         width: 270px;
         margin: 0px 175px;
         font-size: 13px;
-        font-family: map-get($generalFonts, fontText);
     }
 }

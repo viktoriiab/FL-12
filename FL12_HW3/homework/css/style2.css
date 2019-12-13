@@ -1,75 +1,188 @@
-/*
-Error: Undefined variable: "$generalFonts".
-        on line 42 of C:/Users/vikay/Documents/epam/course/FL-12/FL12_HW3/homework/scss/_main.scss
-        from line 3 of C:\Users\vikay\Documents\epam\course\FL-12\FL12_HW3\homework\scss\style2.scss
+* {
+  box-sizing: border-box; }
 
-Backtrace:
-C:/Users/vikay/Documents/epam/course/FL-12/FL12_HW3/homework/scss/_main.scss:42
-C:\Users\vikay\Documents\epam\course\FL-12\FL12_HW3\homework\scss\style2.scss:3
-C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/script/tree/variable.rb:49:in `_perform'
-C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/script/tree/node.rb:50:in `perform'
-C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/script/tree/funcall.rb:186:in `perform_arg'
-C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/script/tree/funcall.rb:133:in `block in _perform'
-C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/script/tree/funcall.rb:133:in `each'
-C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/script/tree/funcall.rb:133:in `each_with_index'
-C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/script/tree/funcall.rb:133:in `each'
-C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/script/tree/funcall.rb:133:in `map'
-C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/script/tree/funcall.rb:133:in `_perform'
-C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/script/tree/node.rb:50:in `perform'
-C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:402:in `visit_prop'
-C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/base.rb:36:in `visit'
-C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:162:in `block in visit'
-C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/stack.rb:79:in `block in with_base'
-C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/stack.rb:135:in `with_frame'
-C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/stack.rb:79:in `with_base'
-C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:162:in `visit'
-C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:444:in `block (2 levels) in visit_rule'
-C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:444:in `map'
-C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:444:in `block in visit_rule'
-C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:183:in `with_environment'
-C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:442:in `visit_rule'
-C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/base.rb:36:in `visit'
-C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:162:in `block in visit'
-C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/stack.rb:79:in `block in with_base'
-C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/stack.rb:135:in `with_frame'
-C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/stack.rb:79:in `with_base'
-C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:162:in `visit'
-C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:329:in `block (2 levels) in visit_import'
-C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:329:in `map'
-C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:329:in `block in visit_import'
-C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/stack.rb:88:in `block in with_import'
-C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/stack.rb:135:in `with_frame'
-C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/stack.rb:88:in `with_import'
-C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:326:in `visit_import'
-C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/base.rb:36:in `visit'
-C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:162:in `block in visit'
-C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/stack.rb:79:in `block in with_base'
-C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/stack.rb:135:in `with_frame'
-C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/stack.rb:79:in `with_base'
-C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:162:in `visit'
-C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
-C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/base.rb:52:in `map'
-C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/base.rb:52:in `visit_children'
-C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:171:in `block in visit_children'
-C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:183:in `with_environment'
-C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:170:in `visit_children'
-C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/base.rb:36:in `block in visit'
-C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:190:in `visit_root'
-C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/base.rb:36:in `visit'
-C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:161:in `visit'
-C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:10:in `visit'
-C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/root_node.rb:36:in `css_tree'
-C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/root_node.rb:20:in `render'
-C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/engine.rb:290:in `render'
-C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/exec/sass_scss.rb:400:in `run'
-C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/exec/sass_scss.rb:63:in `process_result'
-C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/exec/base.rb:52:in `parse'
-C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/exec/base.rb:19:in `parse!'
-C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/bin/sass:13:in `<top (required)>'
-C:/Program Files (x86)/Koala/bin/sass:22:in `load'
-C:/Program Files (x86)/Koala/bin/sass:22:in `<main>'
-*/
-body:before {
-  white-space: pre;
-  font-family: monospace;
-  content: "Error: Undefined variable: \"$generalFonts\".\A         on line 42 of C:/Users/vikay/Documents/epam/course/FL-12/FL12_HW3/homework/scss/_main.scss\A         from line 3 of C:\Users\vikay\Documents\epam\course\FL-12\FL12_HW3\homework\scss\style2.scss"; }
+body {
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+  font-family: "Source Sans Pro", sans-serif;
+  color: #fff;
+  background-color: #21232e; }
+  body main {
+    position: relative;
+    margin: 0 auto;
+    padding: 0;
+    max-width: 960px;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: unset; }
+
+header {
+  font-size: 15px;
+  font-weight: normal;
+  color: inherit;
+  background: url("../img/m-h-night.jpg") no-repeat;
+  background-position-y: center;
+  height: 720px;
+  border-bottom-right-radius: 40%; }
+  header .header-wrap {
+    margin-left: 130px;
+    padding-top: 15px;
+    width: 600px; }
+    header .header-wrap .header_heading {
+      position: relative;
+      font-size: 65px;
+      font-weight: 900;
+      color: inherit;
+      line-height: 1;
+      z-index: 1;
+      margin-top: 100px;
+      margin-bottom: 35px; }
+      header .header-wrap .header_heading::after {
+        z-index: -1;
+        content: '';
+        position: absolute;
+        width: 272px;
+        height: 55px;
+        background-color: #ff4e33;
+        bottom: 0;
+        left: 0; }
+    header .header-wrap .header_text {
+      font-family: "Fresca", sans-serif;
+      white-space: pre-line;
+      line-height: 1.5;
+      margin-top: 0px;
+      margin-bottom: 60px; }
+    header .header-wrap a.login {
+      margin-left: 150px;
+      font-size: 16px;
+      font-weight: 600;
+      color: #fff; }
+
+.header_button, .section_banner .section_banner_button {
+  width: 145px;
+  height: 48px;
+  font-size: 15px;
+  color: #21232e;
+  font-weight: bold;
+  background-color: #e3ac00;
+  border: none;
+  border-radius: 3px; }
+  .header_button:hover, .section_banner .section_banner_button:hover {
+    background-color: #bf9100; }
+
+.landing-logo {
+  display: flex; }
+  .landing-logo img {
+    width: 45px;
+    height: 45px;
+    float: left; }
+  .landing-logo p {
+    font-family: "Fresca", sans-serif;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    margin: 0;
+    padding: 5px 0px 0px 15px;
+    max-width: 100%;
+    font-size: 20px;
+    font-weight: bold;
+    color: inherit;
+    line-height: 1.1; }
+    .landing-logo p span {
+      display: block;
+      font-size: 10px;
+      font-weight: normal;
+      color: inherit; }
+
+.section_text {
+  position: relative;
+  font-size: 45px;
+  font-weight: 600;
+  color: inherit;
+  z-index: 1; }
+  .section_text::after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 203px;
+    height: 55px;
+    background-color: #ff4e33;
+    bottom: 10px;
+    left: 231px; }
+
+.section_card_wrap {
+  margin-bottom: 180px; }
+
+.section_card {
+  display: flex;
+  text-align: center;
+  margin-bottom: 20px;
+  padding: 20px;
+  border-radius: 5px; }
+  .section_card img {
+    width: 100%;
+    border-radius: 5px; }
+  .section_card .section_card_right_container {
+    padding: 15px 85px 10px 85px; }
+    .section_card .section_card_right_container .section_card_heading {
+      font-size: 20px;
+      font-weight: bold;
+      color: #fff; }
+    .section_card .section_card_right_container .section_card_text {
+      padding-top: 20px;
+      text-align: justify;
+      line-height: 1.5;
+      font-family: "Fresca", sans-serif; }
+    .section_card .section_card_right_container a.section_link {
+      font-size: 14px;
+      font-weight: 300;
+      color: #c0c3ce; }
+
+.section_banner {
+  position: absolute;
+  bottom: -60px;
+  width: 1030px;
+  padding: 0px 15px 15px;
+  background: linear-gradient(40deg, #e3ac00, #932c53);
+  border-radius: 5px; }
+  .section_banner .section_banner_heading {
+    position: relative;
+    font-size: 25px;
+    font-weight: bold;
+    color: inherit;
+    margin-bottom: 0;
+    z-index: 1;
+    font-family: "Source Sans Pro", sans-serif; }
+    .section_banner .section_banner_heading::after {
+      z-index: -1;
+      content: '';
+      position: absolute;
+      width: 53px;
+      height: 45px;
+      background-color: #ff4e33;
+      bottom: 0;
+      left: 100px; }
+  .section_banner .section_banner_text {
+    font-size: 14px;
+    font-weight: normal;
+    color: #c0c3ce; }
+
+footer, .section_card {
+  font-size: 14px;
+  color: #c0c3ce;
+  background-color: #3b3f50; }
+
+.footer-wrap, .section_banner {
+  font-family: "Fresca", sans-serif;
+  display: flex;
+  flex-flow: unset;
+  align-items: center;
+  justify-content: space-around; }
+  .footer-wrap .footer_logo, .section_banner .footer_logo {
+    padding: 100px 0px; }
+  .footer-wrap .footer_text, .section_banner .footer_text {
+    width: 270px;
+    margin: 0px 175px;
+    font-size: 13px; }

@@ -1,0 +1,12 @@
+$pathImage: '../img/m-h-night.jpg';
+$generalFonts: (fontRegular: ('Source Sans Pro', sans-serif),
+                fontText: ('Fresca', sans-serif));
+ $generalColors: (contentBackground: #21232e,
+                  mainText: #fff,
+                  subText: #c0c3ce,
+                  sectionHeader: #fff,
+                  sectionBackground: #3b3f50,
+                  highlightColor: #ff4e33,
+                  linkColor: #fff,
+                  buttonBackground: #e3ac00);
+$gradient: linear-gradient(40deg, #e3ac00, #932c53);
