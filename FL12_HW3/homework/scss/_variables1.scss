@@ -1,9 +1,12 @@
 $pathImage: '../img/m-h-day.jpg';
-$generalFonts: (headerFont: ('Source Sans Pro', sans-serif),
-                bodyFont: ('Hind', sans-serif),
-                fontSizeHed: 14px, 
-                fontSizeBody: 15px);
+$generalFonts: (fontRegular: ('Source Sans Pro', sans-serif),
+                fontText: ('Hind', sans-serif));
  $generalColors: (contentBackground: #fff,
                   mainText:#2c2f3c,
+                  subText: #c0c3ce,
+                  sectionHeader: #fff,
+                  sectionBackground: #21232e,
                   highlightColor: #14a0c7,
-                  buttonColor: #699900);
+                  linkColor: #fff,
+                  buttonBackground: #699900);
+$gradient: linear-gradient(40deg, #699900, #2d5bd9);
