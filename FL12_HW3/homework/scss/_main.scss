@@ -52,6 +52,7 @@ header{
     @include font-set;
     background: url($pathImage) no-repeat;
     background-position-y: center;
+    background-size: cover;
     height: 720px;
     border-bottom-right-radius: 40%;
     .header-wrap{

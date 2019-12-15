@@ -24,6 +24,7 @@ header {
   color: inherit;
   background: url("../img/m-h-day.jpg") no-repeat;
   background-position-y: center;
+  background-size: cover;
   height: 720px;
   border-bottom-right-radius: 40%; }
   header .header-wrap {
