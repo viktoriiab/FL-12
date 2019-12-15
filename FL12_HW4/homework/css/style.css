@@ -1,0 +1,117 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body{
+    font-family: 'Merriweather', serif;
+  /*  min-width: 900px;*/
+    background-color: #fff;
+    color: #000;
+    margin-top: 90px;
+
+}
+a{
+    text-decoration: none;
+    color: #777;
+}
+ul{
+    display: flex;
+}
+ul li{
+    text-align: center;
+}
+button, .post-link{
+    padding: 15px 30px;
+    border-radius: 25px;
+    color: #555;
+    background-color: #fff; 
+    border: none;
+    letter-spacing: 1px;
+    font-family: auto;
+}
+.header-wrap{
+    position: relative;
+    display: flex;
+    flex-flow: column;
+}
+.header-top{
+    display: flex;
+    padding: 35px 235px;
+    justify-content: space-between;
+    z-index: 10;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    width: 100%;
+    background-color: #fff;
+}
+.header-top .header_logo{
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: #555;
+}
+.header-top .nav-item{
+    list-style: none;
+    font-size: 0.9em;
+    padding: 0px 20px;
+    letter-spacing: 1px;
+    color: #777;
+}
+.nav-item a:hover{
+    color: #bfba55;
+}
+.header_content{
+    text-align: center;
+    background-image: url("../img/home-bg.jpg");
+    height: 810px;
+    max-width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    color:white;
+}
+.header_content:before {
+    content: "";
+    position:absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    background: rgba(0,0,0,0.7);}
+.flex-center{
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    position: absolute;
+    left: 50%;
+    top: 51%;
+    transform: translate(-50%, -51%);
+}
+h1.header_title{
+    font-size: 53px;
+}
+
+p.header_text{
+    font-size: 14px;
+    color: gold;
+    letter-spacing: 1px;
+    margin-top: 15px;
+}
+button.header_button{
+    font-size: 11px;
+    text-transform: uppercase;
+    color: #555;
+    background-color: #fff;
+    font-size: 11px;
+    border: none;
+    letter-spacing: 1px;
+    font-weight: 700;
+    font-family: auto;
+    margin-top: 50px;
+}
+button.header_button:hover{
+    color: #fff;
+    background-color: #bfba55;
+}
