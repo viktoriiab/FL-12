@@ -175,19 +175,32 @@ a.post-link:hover{
     color: #777;
     padding-top: 100px;
     padding-bottom: 90px;
+    display: flex;
+    flex-flow: column;
 }
 .footer-wrap{
     display: flex;
-    justify-content: center;
+    align-self: center;
+    width: 900px;
+    justify-content: space-between;
+}
+.footer-text, .footer-cr, .contact{
+    font-family: none;
+    font-size: 16px;
 }
 .footer-content .footer-title{
     color: #fff;
     margin-bottom: 25px;
 }
 .footer-content .footer-text{
-    font-family: none;
     max-width: 400px;
-    line-height: 22px;
-    margin-bottom: 30px;
+    line-height: 25px;
+    margin-bottom: 25px;
 }
-
+address.contact{
+    font-style: normal;
+}
+a.contact{
+    display: block;
+    margin-top: 18px;
+}
