@@ -5,7 +5,6 @@
 }
 body{
     font-family: 'Merriweather', serif;
-  /*  min-width: 900px;*/
     background-color: #fff;
     color: #000;
     margin-top: 90px;
@@ -28,12 +27,12 @@ button, .post-link{
     background-color: #fff; 
     border: none;
     letter-spacing: 1px;
-    font-family: auto;
 }
 .header-wrap{
     position: relative;
     display: flex;
     flex-flow: column;
+    margin-bottom: 30px;
 }
 .header-top{
     display: flex;
@@ -106,7 +105,6 @@ button.header_button{
     background-color: #fff;
     font-size: 11px;
     border: none;
-    letter-spacing: 1px;
     font-weight: 700;
     font-family: auto;
     margin-top: 50px;
@@ -115,3 +113,81 @@ button.header_button:hover{
     color: #fff;
     background-color: #bfba55;
 }
+.blog-wrap{
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    margin-bottom: 65px;
+}
+article.post-wrap{
+    max-width: 900px;
+    margin-top: 80px;
+}
+article.post-wrap:not(:last-child){
+    border-bottom: 1px solid #e3e2e2;
+}
+.blog-wrap img.post-img{
+    width: 900px;
+    height: 600px;
+    margin-bottom: 40px;
+}
+.post-wrap .post-info{
+    margin-top: 20px;
+    display: flex;
+}
+
+.post-info img.author-img{
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    margin-bottom: 30px;
+}
+.post-info .author-info{
+    padding-top: 10px;
+}
+.post-info .author-info > *{
+    padding: 15px 10px;
+    color: #555;
+    font-family: none;
+}
+.post-wrap .post-content{
+    color: #777;
+    font-size: 17px;
+    line-height: 25px;
+    font-family: none;
+}
+.post-wrap .full-text{
+    margin-top: 40px;
+    margin-bottom: 65px;
+}
+a.post-link{
+   border: 1px solid #777;
+   font-weight: 600;
+   color: #777;
+   font-size: 11px;
+}
+a.post-link:hover{
+    color: #bfba55;
+    border-color: #bfba55;
+}
+.footer{
+    background-color: #000;
+    color: #777;
+    padding-top: 100px;
+    padding-bottom: 90px;
+}
+.footer-wrap{
+    display: flex;
+    justify-content: center;
+}
+.footer-content .footer-title{
+    color: #fff;
+    margin-bottom: 25px;
+}
+.footer-content .footer-text{
+    font-family: none;
+    max-width: 400px;
+    line-height: 22px;
+    margin-bottom: 30px;
+}
+
