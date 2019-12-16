@@ -4,11 +4,9 @@
     padding: 0;
 }
 body{
-    font-family: 'Merriweather', serif;
     background-color: #fff;
     color: #000;
     margin-top: 90px;
-
 }
 a{
     text-decoration: none;
@@ -19,6 +17,9 @@ ul{
 }
 ul li{
     text-align: center;
+}
+h1,h2,.header-top,.header_text,a.post-link{
+    font-family: 'Merriweather', serif;
 }
 button, .post-link{
     padding: 15px 30px;
@@ -59,7 +60,7 @@ button, .post-link{
     letter-spacing: 1px;
     color: #777;
 }
-.nav-item a:hover{
+.nav-item a:hover, p.header_text{
     color: #bfba55;
 }
 .header_content{
@@ -94,7 +95,6 @@ h1.header_title{
 
 p.header_text{
     font-size: 14px;
-    color: gold;
     letter-spacing: 1px;
     margin-top: 15px;
 }
@@ -103,10 +103,8 @@ button.header_button{
     text-transform: uppercase;
     color: #555;
     background-color: #fff;
-    font-size: 11px;
     border: none;
     font-weight: 700;
-    font-family: auto;
     margin-top: 50px;
 }
 button.header_button:hover{
@@ -148,13 +146,11 @@ article.post-wrap:not(:last-child){
 .post-info .author-info > *{
     padding: 15px 10px;
     color: #555;
-    font-family: none;
 }
 .post-wrap .post-content{
     color: #777;
     font-size: 17px;
     line-height: 25px;
-    font-family: none;
 }
 .post-wrap .full-text{
     margin-top: 40px;
@@ -185,7 +181,6 @@ a.post-link:hover{
     justify-content: space-between;
 }
 .footer-text, .footer-cr, .contact{
-    font-family: none;
     font-size: 16px;
 }
 .footer-content .footer-title{
