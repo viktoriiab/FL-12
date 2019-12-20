@@ -246,6 +246,16 @@ h2 {
   padding-right: 2.5em;
   font-size: 1em;
 }
+.footer-container{
+  background-color: #024161;
+  opacity: 0.6;
+  display: flex;
+  justify-content: space-between;
+  padding: 2em;
+  align-items: baseline;
+  margin-bottom: 0.5em;
+}
+
 @media screen and (max-width: 768px) {
   .header {
     grid-template-columns: auto;
@@ -303,6 +313,10 @@ h2 {
     font-size: 0.6em;
     padding: 0;
   }
+  .footer-container{
+    display: block;
+    text-align: center;
+  }
 }
 
 @media screen and (max-width: 480px) {
@@ -322,5 +336,11 @@ h2 {
   }
   .news_content .news_text{
     font-size: 0.95em;
+  }
+  .footer-container{
+    margin-top: 1em;
+  }
+  .footer-container .footer-text{
+    line-height: 2em;
   }
 }
