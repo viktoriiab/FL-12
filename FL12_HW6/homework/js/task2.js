@@ -16,3 +16,11 @@ if ( a.length < 1 || isNaN(a) || b.length < 1 || isNaN(b) || c.length < 1 || isN
         correctInputes = true;
     }
 }
+
+if( correctInputes ){
+    if( Math.max(a,b,c)<(a+b+c)/2 ){
+        console.log('+');
+    }else{
+        console.log('-');
+    }
+}
