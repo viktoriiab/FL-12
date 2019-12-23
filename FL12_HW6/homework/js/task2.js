@@ -19,8 +19,16 @@ if ( a.length < 1 || isNaN(a) || b.length < 1 || isNaN(b) || c.length < 1 || isN
 
 if( correctInputes ){
     if( Math.max(a,b,c)<(a+b+c)/2 ){
-        console.log('+');
+        if ( a === b || a === c || b === c ){
+            if( a === b && a === c){
+                console.log('Equilateral triangle!');
+            }else{
+                console.log('Isosceles triangle!');
+            }
+        }else{
+            console.log('Scalene triangle!');
+        }
     }else{
-        console.log('-');
+        console.log('Triangle doesn’t exist!');
     }
 }
