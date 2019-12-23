@@ -7,7 +7,7 @@ let a = prompt('Input first value "a" for a quadratic equation:');
 let b = prompt('Input second value "b" for a quadratic equation:');
 let c = prompt('Input third value "c" for a quadratic equation:');
 
-if (a.length === 0 || b.length === 0 || c.length === 0){
+if ( a.length === 0 || b.length === 0 || c.length === 0 ){
     correctInputes = false; 
 }else{
     a = Number(a);
@@ -18,16 +18,16 @@ if (a.length === 0 || b.length === 0 || c.length === 0){
 if ( isNaN(a) || !isFinite(a) || Math.abs(a) === 0 ){
     correctInputes = false;
 }else{
-    if ( isNaN(b) || !isFinite(b)) {
+    if ( isNaN(b) || !isFinite(b) ) {
         correctInputes = false;
     }else {
-        if ( isNaN(c) || !isFinite(c)){
+        if ( isNaN(c) || !isFinite(c) ){
             correctInputes = false;
         }
     }
 }
 
-if(!correctInputes){
+if( !correctInputes ){
     console.log('Invalid input data');
 }else{
     let discriminant = Math.pow(b, auxiliaryNumb2) - auxiliaryNumb4 * a * c;
