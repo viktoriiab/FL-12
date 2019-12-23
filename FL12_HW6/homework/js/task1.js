@@ -7,9 +7,13 @@ let a = prompt('Input first value "a" for a quadratic equation:');
 let b = prompt('Input second value "b" for a quadratic equation:');
 let c = prompt('Input third value "c" for a quadratic equation:');
 
-a = Number(a);
-b = Number(b);
-c = Number(c);
+if (a.length === 0 || b.length === 0 || c.length === 0){
+    correctInputes = false; 
+}else{
+    a = Number(a);
+    b = Number(b);
+    c = Number(c);
+}
 
 if ( isNaN(a) || !isFinite(a) || Math.abs(a) === 0 ){
     correctInputes = false;
@@ -30,12 +34,8 @@ if(!correctInputes){
 
     if ( discriminant >= 0 ){
         if ( discriminant === 0 ){
-            if(b === 0) {
-                console.log('x = ', x1);
-            }else{
-                x1 = x2 = Math.round(- (b / (auxiliaryNumb2 * a) ) );
-                console.log('x = ', x1);
-            }
+            x1 = x2 = Math.round( - b / (auxiliaryNumb2 * a) );
+            console.log('x = ', x1);
         }else{
             x1 = Math.round( (-b + Math.sqrt(discriminant) ) / (auxiliaryNumb2 * a) );
             x2 = Math.round( (-b - Math.sqrt(discriminant) ) / (auxiliaryNumb2 * a) );
