@@ -1,4 +1,6 @@
-const data = {
+const minDataLength = 5;
+
+let data = {
     user : {
         userEmail : 'user@gmail.com',
         userPassword : 'UserPass'
@@ -8,11 +10,11 @@ const data = {
         adminPassword : 'AdminPass'
     }
 }
-const minDataLength = 5;
 let validEmail = false;
 let validPass = false;
 let validLen = true;
 let password = '';
+
 let email = prompt('Please, enter your email.');
 
 if( email === null || email.length === 0 ){
@@ -52,19 +54,44 @@ if( validEmail ){
     }
 }
 
-/*if( validPass ){
+if( validPass ){
     if ( window.confirm('Do you want to change your password?') ){
-
-    }
-}*/
-   /* switch (email) {
-        case data.user.userEmail :
-            if( data.user.userPassword === password){
-                console.log('+');
+        password = prompt('Please, enter again your current password.');
+    if( password === null || password.length === 0 ){
+        alert('Canceled.');
+    }else{
+        if( data.user.userPassword === password || data.admin.adminPassword === password ){
+            let newPass1 = prompt('Please, enter new password.');
+            if( newPass1 === null || newPass1.length === 0 ){
+                alert('Canceled.');
             }else{
-                console.log('wrong');  
+                if( newPass1.length >= minDataLength ){
+                    let newPass2 = prompt('Please, enter new password again.');
+                    if( newPass1 === newPass2 ) {
+                        switch ( email) {
+                            case data.user.userEmail :                         
+                                data.user.userPassword = newPass1;
+                                alert('You have successfully changed your password.');                           
+                                break;
+                            case data.admin.adminEmail :                         
+                                data.admin.adminPassword = newPass1;
+                                alert('You have successfully changed your password.');
+                                break;
+                            default:
+                                break;
+                        }
+                    }else{
+                        alert('You wrote the wrong password.');
+                    }
+                }else{
+                    alert('It’s too short password. Sorry.');
+                }
             }
-            break;
-        default:
-            console.log('wrong');
-    }*/
+        }else{
+            alert('Wrong password!');
+        }
+    }
+    }else{
+        alert('You have failed the change.');
+    }
+}
