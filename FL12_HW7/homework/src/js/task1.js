@@ -41,12 +41,22 @@ if( validLen ) {
 
 if( validEmail ){
     password = prompt('Please, enter your password.');
-    if( data.user.userPassword === password || data.admin.adminPassword === password ){
-        validPass = true;
+    if( password === null || password.length === 0 ){
+        alert('Canceled.');
     }else{
-        alert('Wrong password!');
+        if( data.user.userPassword === password || data.admin.adminPassword === password ){
+            validPass = true;
+        }else{
+            alert('Wrong password!');
+        }
     }
 }
+
+/*if( validPass ){
+    if ( window.confirm('Do you want to change your password?') ){
+
+    }
+}*/
    /* switch (email) {
         case data.user.userEmail :
             if( data.user.userPassword === password){
