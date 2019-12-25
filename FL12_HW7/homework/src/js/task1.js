@@ -9,12 +9,11 @@ const data = {
     }
 }
 const minDataLength = 5;
-
 let validEmail = false;
 let validPass = false;
 let validLen = true;
-
-let email = prompt('Please, enter your email!');
+let password = '';
+let email = prompt('Please, enter your email.');
 
 if( email === null || email.length === 0 ){
     alert('Canceled.');
@@ -22,7 +21,7 @@ if( email === null || email.length === 0 ){
 }else{
         while(email.length < minDataLength){
             alert('I don\'t know any emails having name length less than 5 symbols!');
-            email = prompt('Please, enter your email!');
+            email = prompt('Please, enter your email.');
 
             if( email === null || email.length === 0 ){
                 alert('Canceled.');
@@ -32,10 +31,30 @@ if( email === null || email.length === 0 ){
         }      
 }
 
-if(validLen) {
-     if (email === data.user.userEmail || email === data.admin.adminEmail) {
+if( validLen ) {
+     if ( email === data.user.userEmail || email === data.admin.adminEmail ) {
         validEmail = true;
      }else{
          alert('I don’t know you');
      }
 }
+
+if( validEmail ){
+    password = prompt('Please, enter your password.');
+    if( data.user.userPassword === password || data.admin.adminPassword === password ){
+        validPass = true;
+    }else{
+        alert('Wrong password!');
+    }
+}
+   /* switch (email) {
+        case data.user.userEmail :
+            if( data.user.userPassword === password){
+                console.log('+');
+            }else{
+                console.log('wrong');  
+            }
+            break;
+        default:
+            console.log('wrong');
+    }*/
