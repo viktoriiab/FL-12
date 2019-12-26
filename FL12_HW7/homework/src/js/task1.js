@@ -67,21 +67,14 @@ if( validPass ){
             }else{
                 if( newPass1.length >= minDataLength ){
                     let newPass2 = prompt('Please, enter new password again.');
-                    if( newPass1 === newPass2 ) {
-                        switch ( email) {
-                            case data.user.userEmail :                         
-                                data.user.userPassword = newPass1;
-                                alert('You have successfully changed your password.');                           
-                                break;
-                            case data.admin.adminEmail :                         
-                                data.admin.adminPassword = newPass1;
-                                alert('You have successfully changed your password.');
-                                break;
-                            default:
-                                break;
-                        }
+                    if( newPass1 === null || newPass1.length === 0 ){
+                        alert('Canceled.');
                     }else{
-                        alert('You wrote the wrong password.');
+                        if( newPass1 === newPass2 ) {
+                            alert('You have successfully changed your password.');
+                        }else{
+                            alert('You wrote the wrong password.');
+                        }
                     }
                 }else{
                     alert('It’s too short password. Sorry.');
