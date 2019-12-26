@@ -44,7 +44,7 @@ while (game.newGame){
                  break getUserNumber;
             }
 
-            if( Number(userNumber) === currentNumber ){
+            if( Number(userNumber) === currentNumber){
                 gamePrise.totalPrise += prises[i];
                 if ( window.confirm(`
                     Congratulations, you won!
@@ -70,6 +70,12 @@ while (game.newGame){
                      alert(`Thank you for your participation. 
                      Your prize is: ${gamePrise.totalPrise}$`);
                      if ( window.confirm('Do you want to play a game again?') ){
+                        gamePrise.totalPrise = 0;
+                        game.numbRange = 0;
+                        prises[0] = 100;
+                        for (let j = 1; j < prises.length; j++) {
+                            prises[j] = prises[j - 1]/ 2;
+                        }
                         break getUserNumber;
                      }else{
                         game.newGame = false;
