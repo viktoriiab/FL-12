@@ -1,3 +1,4 @@
+const numb2 = 2;
 let game = {
     newGame : false,
     minOfRange : 0,
@@ -23,7 +24,6 @@ if ( window.confirm('Do you want to play a game?') ){
 
 while (game.newGame){
     currentNumber = Math.floor(Math.random() * (game.maxOfRange + game.numbRange + 1));
-    console.log(currentNumber);
     getUserNumber:
     for (let i = 0; i < game.attemptNumb; i++){
         userNumber = prompt(`
@@ -74,7 +74,7 @@ while (game.newGame){
                         game.numbRange = 0;
                         prises[0] = 100;
                         for (let j = 1; j < prises.length; j++) {
-                            prises[j] = prises[j - 1]/ 2;
+                            prises[j] = prises[j - 1]/ numb2;
                         }
                         break getUserNumber;
                      }else{
