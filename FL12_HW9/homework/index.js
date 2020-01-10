@@ -16,7 +16,9 @@ function executeforEach (arr, callback){
       callback(arr[i]);
     }
 }
-executeforEach([1,2,3], function(el) {console.log(el * 2)});
+executeforEach([1,2,3], function(el){
+    console.log(el * 2);
+});
 
 function mapArray(arr, callback){
     let transformedArray = [];
@@ -44,3 +46,12 @@ function filterArray(arr,callback){
 filterArray([2, 5, 8], function(el){
     return el % 2 === 0; 
 });
+
+function flipOver(str){
+    let reverseStr = '';
+    for ( let i = str.length - 1; i >= 0; i-- ){
+        reverseStr += str[i];
+    }
+    return reverseStr;
+}
+flipOver('hey world');
