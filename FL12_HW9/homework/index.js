@@ -79,4 +79,14 @@ function getArrayOfKeys(objName, key){
     return keysValues;
 }
 getArrayOfKeys(actors, 'name'); 
-  
+
+function substitute(arr){
+    let transformedArray = mapArray(arr, function(el){ 
+        if( el < 30){ 
+            return '*'
+        }
+        return el;
+    });
+    return transformedArray;
+}
+substitute([58, 14, 48, 2, 30, 29]);
