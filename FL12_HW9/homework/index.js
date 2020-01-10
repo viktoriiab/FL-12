@@ -55,3 +55,12 @@ function flipOver(str){
     return reverseStr;
 }
 flipOver('hey world');
+
+function makeListFromRange(arr){
+    let transformedArray = [];
+    for ( let i = arr[0]; i <= arr[arr.length - 1]; i++ ){
+        transformedArray.push(i);
+    }
+    return transformedArray;
+}
+makeListFromRange([2, 7]);
