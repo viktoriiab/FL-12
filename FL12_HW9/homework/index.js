@@ -1,3 +1,8 @@
+const actors = [
+    { name: 'tommy', age: 36 },
+    { name: 'lee', age: 28 }
+];  
+
 function convert(...theArgs){
     let convertedValues = [];
     for ( let i = 0; i < theArgs.length; i++ ){
@@ -64,3 +69,14 @@ function makeListFromRange(arr){
     return transformedArray;
 }
 makeListFromRange([2, 7]);
+
+
+function getArrayOfKeys(objName, key){
+    let keysValues = [];
+    executeforEach(objName, function(el){
+        keysValues.push(el[key]);
+    });
+    return keysValues;
+}
+getArrayOfKeys(actors, 'name'); 
+  
