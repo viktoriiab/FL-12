@@ -2,7 +2,15 @@ const actors = [
     { name: 'tommy', age: 36 },
     { name: 'lee', age: 28 }
 ];  
-const date = new Date(2019, 0, 2);
+const YEAR = 2019;
+const NUMB2 = 2;
+const NUMB3 = 3;
+const NUMB5 = 5;
+const NUMB8 = 8;
+const NUMB10 = 10;
+const NUMB30 = 30;
+const NUMB31 = 31;
+const date = new Date(YEAR, 0, NUMB2);
 
 function convert(...theArgs){
     let convertedValues = [];
@@ -15,15 +23,15 @@ function convert(...theArgs){
     }
     return convertedValues;
 }
-convert('1', 2, 3, '4');
+convert('1', NUMB2, NUMB3, '4');
 
 function executeforEach (arr, callback){
     for ( let i = 0; i < arr.length; i++ ){
       callback(arr[i]);
     }
 }
-executeforEach([1,2,3], function(el){
-    console.log(el * 2);
+executeforEach([1,NUMB2,NUMB3], function(el){
+    console.log(el * NUMB2);
 });
 
 function mapArray(arr, callback){
@@ -33,11 +41,11 @@ function mapArray(arr, callback){
     });
     return transformedArray;
 }
-mapArray([2, '5', 8], function(el){
+mapArray([NUMB2, '5', NUMB8], function(el){
     if( typeof el !== 'number' ){ 
-        return parseInt(el) + 3;
+        return parseInt(el) + NUMB3;
     }
-    return el + 3;
+    return el + NUMB3;
 });
 
 function filterArray(arr,callback){
@@ -49,8 +57,8 @@ function filterArray(arr,callback){
     });
     return transformedArray; 
 }
-filterArray([2, 5, 8], function(el){
-    return el % 2 === 0; 
+filterArray([NUMB2, NUMB5, NUMB8], function(el){
+    return el % NUMB2 === 0; 
 });
 
 function flipOver(str){
@@ -69,7 +77,7 @@ function makeListFromRange(arr){
     }
     return transformedArray;
 }
-makeListFromRange([2, 7]);
+makeListFromRange([NUMB2, NUMB8]);
 
 
 function getArrayOfKeys(objName, key){
@@ -83,18 +91,25 @@ getArrayOfKeys(actors, 'name');
 
 function substitute(arr){
     let transformedArray = mapArray(arr, function(el){ 
-        if( el < 30){ 
+        if( el < NUMB30){ 
             return '*'
         }
         return el;
     });
     return transformedArray;
 }
-substitute([58, 14, 48, 2, 30, 29]);
+substitute([NUMB31, NUMB2, NUMB30, NUMB8]);
 
 function getPastDay(date, num){
     let copiedDate = new Date(date.getTime());
     copiedDate.setDate(date.getDate() - num);
-    console.log(copiedDate.getDate());
+    return copiedDate.getDate();
 }
-getPastDay(date, 2);
+getPastDay(date, NUMB2);
+
+function formatDate(date){
+    let zeroHours = (date.getHours() < NUMB10 ? '0' : '') + date.getHours();
+    let zeroMinutes = (date.getMinutes() < NUMB10 ? '0' : '') + date.getMinutes();
+    return `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()} ${zeroHours}:${zeroMinutes}`;
+}
+formatDate(new Date()); 
