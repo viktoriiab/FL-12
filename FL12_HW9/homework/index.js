@@ -2,6 +2,7 @@ const actors = [
     { name: 'tommy', age: 36 },
     { name: 'lee', age: 28 }
 ];  
+const date = new Date(2019, 0, 2);
 
 function convert(...theArgs){
     let convertedValues = [];
@@ -90,3 +91,10 @@ function substitute(arr){
     return transformedArray;
 }
 substitute([58, 14, 48, 2, 30, 29]);
+
+function getPastDay(date, num){
+    let copiedDate = new Date(date.getTime());
+    copiedDate.setDate(date.getDate() - num);
+    console.log(copiedDate.getDate());
+}
+getPastDay(date, 2);
