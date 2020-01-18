@@ -2,7 +2,10 @@ const hundred = 100;
 class Fighter {
 
     constructor(prop) {
-      this._prop = prop;
+        this._prop = prop;
+        this._wins = 0;
+        this._losses = 0;
+        this._totalHP = prop.hp;
     }
     getName(){
         return this._prop.name;
@@ -48,6 +51,25 @@ class Fighter {
             this._prop.hp = result;
         }
     }
+    logCombatHistory(){
+        console.log(`
+            Name: ${this.getName()}, Wins: ${this._wins}, Losses: ${this._losses} 
+        `);
+    }
+    heal(points){
+        let result = this.getHealth() + points;
+        if( result > this._totalHP ){
+            this._prop.hp = this._totalHP;
+        }else{
+            this._prop.hp = result;
+        }
+    }
+    addWin(){
+        return this._wins + 1;
+      }
+    addLoss(){
+        return this._losses + 1;
+    }
 }
 
 const fighter1 = new Fighter({name: 'Maximus', damage: 20, strength: 20, agility: 15, hp: 100});
@@ -56,3 +78,5 @@ const fighter2 = new Fighter({name: 'Commodus', damage: 25, strength: 25, agilit
 
 fighter1.attack(fighter2);
 fighter2.attack(fighter1);
+fighter2.logCombatHistory();
+fighter2.heal(10);
