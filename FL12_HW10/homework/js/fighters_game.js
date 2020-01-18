@@ -29,6 +29,7 @@ class Fighter {
         if ( success <= probability ){
             result = true;
         }
+        console.log('current health ' ,defender.getHealth());
         console.log(success);
         console.log(probability);
         console.log(result);
@@ -42,6 +43,7 @@ class Fighter {
                 ${this.getName()} attack missed
             `);
         }
+        console.log('current health ', defender.getHealth());
     }
     dealDamage(points){
         let result = this.getHealth() - points;
@@ -65,18 +67,60 @@ class Fighter {
         }
     }
     addWin(){
-        return this._wins + 1;
+        return this._wins++;
       }
     addLoss(){
-        return this._losses + 1;
+        return this._losses++;
     }
 }
 
-const fighter1 = new Fighter({name: 'Maximus', damage: 20, strength: 20, agility: 15, hp: 100});
-const fighter2 = new Fighter({name: 'Commodus', damage: 25, strength: 25, agility: 20, hp: 90});
+const myFighter1 = new Fighter({name: 'Maximus', damage: 20, strength: 20, agility: 15, hp: 100});
+const myFighter2 = new Fighter({name: 'Commodus', damage: 25, strength: 25, agility: 20, hp: 90});
 
+function battle(fighter1,fighter2){
+    const messageLosse = 'is dead and can\'t fight.';
+    const messageWin = 'has won!'
+    function endMessage(fighter,message){
+        return console.log(`
+            ${fighter.getName()} ${message}
+        `);
+    }
 
-fighter1.attack(fighter2);
-fighter2.attack(fighter1);
-fighter2.logCombatHistory();
-fighter2.heal(10);
+    let result = !fighter1.getHealth() || !fighter2.getHealth();
+    if( result ){
+        if ( !fighter1.getHealth() ){
+            fighter1.addLoss();
+            fighter2.addWin();
+            endMessage(fighter1, messageLosse);
+        }else{
+            fighter2.addLoss();
+            fighter1.addWin();
+            endMessage(fighter2, messageLosse);
+        }
+    }
+    while(!result){
+
+        if( fighter1.getHealth() > 0 ){
+            fighter1.attack(fighter2);
+        }else{
+            result = true;
+            fighter1.addLoss();
+            fighter2.addWin();
+            return endMessage(fighter2,messageWin);
+        }
+
+        if( fighter2.getHealth() > 0 ){
+            fighter2.attack(fighter1);
+        }else{
+            result = true;
+            fighter2.addLoss();
+            fighter1.addWin();
+            return endMessage(fighter1,messageWin);
+        }
+
+    }
+        
+}
+battle(myFighter1,myFighter2);
+myFighter1.logCombatHistory();
+myFighter2.logCombatHistory();
