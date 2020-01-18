@@ -29,10 +29,6 @@ class Fighter {
         if ( success <= probability ){
             result = true;
         }
-        console.log('current health ' ,defender.getHealth());
-        console.log(success);
-        console.log(probability);
-        console.log(result);
         if( result ){
             defender.dealDamage(this.getDamage());
             console.log(`
@@ -43,7 +39,6 @@ class Fighter {
                 ${this.getName()} attack missed
             `);
         }
-        console.log('current health ', defender.getHealth());
     }
     dealDamage(points){
         let result = this.getHealth() - points;
@@ -73,9 +68,6 @@ class Fighter {
         return this._losses++;
     }
 }
-
-const myFighter1 = new Fighter({name: 'Maximus', damage: 20, strength: 20, agility: 15, hp: 100});
-const myFighter2 = new Fighter({name: 'Commodus', damage: 25, strength: 25, agility: 20, hp: 90});
 
 function battle(fighter1,fighter2){
     const messageLosse = 'is dead and can\'t fight.';
@@ -121,6 +113,3 @@ function battle(fighter1,fighter2){
     }
         
 }
-battle(myFighter1,myFighter2);
-myFighter1.logCombatHistory();
-myFighter2.logCombatHistory();
