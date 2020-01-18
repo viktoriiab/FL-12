@@ -32,7 +32,7 @@ class Fighter {
         if( result ){
             defender.dealDamage(this.getDamage());
             console.log(`
-                ${this.getName()} make ${this.getDamage()} damage to ${defender.getName()}
+                ${this.getName()} makes ${this.getDamage()} damage to ${defender.getName()}
             `);
         }else{
             console.log(`
