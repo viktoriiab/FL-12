@@ -19,7 +19,13 @@ i{
 .folder, .insert_drive_file{
     display: flex;
     align-items: flex-end;
+    padding-bottom: 0.3em;
+    
 }
 .folder ~ div{
     margin-left: 1em;
+}
+.folder:hover, .insert_drive_file:hover{
+    cursor: pointer;
+    background-color: #D3D3D3;
 }

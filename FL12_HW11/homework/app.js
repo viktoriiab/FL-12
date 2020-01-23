@@ -36,34 +36,71 @@ const structure = [
 ];
 
 const rootNode = document.getElementById('root');
-const string = 'Folder is empty';
 
-function render(container,_obj){
-
+let state = {
+  open :'false',
+  visible : 'true'
+}
+function isEmpty(){
+  const string = 'Folder is empty';
   let empty = document.createElement('p');
   empty.innerHTML = string;
+  return empty;
+}
 
-  for (let i = 0; i < _obj.length; i++){
-    let _class = 'insert_drive_file';
-    let node = document.createElement('div');
-
-    if(_obj[i]['folder']){
-      _class = 'folder';
+function setClasses(element, state){
+  let _class = 'insert_drive_file';
+  if(element['folder']){
+    _class = 'folder';
+  }
+  if(state !== undefined){
+    if(state === true){
+      _class += ' open';
+    }else{
+      _class += ' close';
     }
+  }
+  return _class;
+}
 
+function trigger() {
+  document.addEventListener('click', function(event) {
+    console.log(event.toElement);
+    let node = event.toElement.classList;
+    if( node.contains('folder') ){
+      if( node.contains('close') ){
+        event.target.firstElementChild.innerText = 'folder_open';
+        node.remove('close');
+        node.add('open');
+      }else{
+        event.target.firstElementChild.innerText = 'folder';
+        node.remove('open');
+        node.add('close');
+      }
+    }
+  });
+}
+function render(container,_obj, state){
+  for (let i = 0; i < _obj.length; i++){
+
+    let node = document.createElement('div');
     node.innerHTML = `
-      <div class = ${_class}><i class='material-icons'>${_class}</i>${_obj[i]['title']}</div>
+    <div class = '${setClasses(_obj[i], state.open)}'>
+    <i class='material-icons'>${setClasses(_obj[i])}</i>
+    ${_obj[i]['title']}</div>
     `;
 
     if( !_obj[i]['children'] ){
       if(_obj[i]['children'] === null || _obj[i]['children'] === false){
-        node.appendChild(empty);
+        node.appendChild(isEmpty());
       }
     }else{
-      render(node,_obj[i]['children']);
+      render(node,_obj[i]['children'], state);
     }
-
-    container.appendChild(node);
+    container.appendChild(node);   
   }
 }
-render(rootNode, structure);
+
+
+render(rootNode, structure, state);
+trigger();
