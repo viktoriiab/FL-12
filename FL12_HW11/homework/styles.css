@@ -6,11 +6,15 @@
 #root{
     margin: 1em 1em;
 }
-.empty{
-    font-style: italic;
-    margin-left: 0.5em;
+p{
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
 }
-
+p:hover{
+    cursor: pointer;
+    background-color: #D3D3D3;
+}
 i{
     color: orange;
 }
@@ -18,23 +22,19 @@ span{
     font-style: italic;
     margin-left: 0.5em;
 }
+.empty{
+    font-style: italic;
+    margin-left: 0.5em;
+}
 .insert_drive_file i{
     color: gray;
-}
-/*.visible{
-    display: flex;
-}
-.hidden{
-    display: none;
-}*/
-p{
-    display: flex;
-    align-items: flex-end;
 }
 .folder, .insert_drive_file{
     margin-left: 1em;
 }
-p:hover{
-    cursor: pointer;
-    background-color: #D3D3D3;
+.visible{
+    display: block;
+}
+.hidden{
+    display: none;
 }
