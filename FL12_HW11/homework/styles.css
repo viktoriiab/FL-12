@@ -6,26 +6,35 @@
 #root{
     margin: 1em 1em;
 }
-p{
+.empty{
     font-style: italic;
     margin-left: 0.5em;
 }
+
 i{
     color: orange;
+}
+span{
+    font-style: italic;
+    margin-left: 0.5em;
 }
 .insert_drive_file i{
     color: gray;
 }
-.folder, .insert_drive_file{
+/*.visible{
+    display: flex;
+}
+.hidden{
+    display: none;
+}*/
+p{
     display: flex;
     align-items: flex-end;
-    padding-bottom: 0.3em;
-    
 }
-.folder ~ div{
+.folder, .insert_drive_file{
     margin-left: 1em;
 }
-.folder:hover, .insert_drive_file:hover{
+p:hover{
     cursor: pointer;
     background-color: #D3D3D3;
 }
