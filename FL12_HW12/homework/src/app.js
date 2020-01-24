@@ -18,7 +18,7 @@ function renderList(list){
         document.getElementById('list').insertAdjacentHTML('beforeend', `<li id='${list[i].key}'>
         <div class='term'><h3>${list[i].key} : </h3>
         <p>${list[i].value}</p></div><input type='checkbox' name='${list[i].key}'/>
-        <div><button>Edit</button><button id='delete'>Remove</button></div></li>`);
+        <div><button>Edit</button><button name='${list[i].key}' onclick='deleteItem();'>Remove</button></div></li>`);
     }
 }
 function loadList(){
@@ -41,10 +41,14 @@ function loadList(){
 
 function loadPage(_location) {
     location.hash = _location;
-    loadList();
+    loadList();  
 }
 addEventListener('load',loadPage('main'));
-
+function deleteItem(){
+    let item = document.getElementById(event.target.name);
+    item.remove();
+    localStorage.removeItem(event.target.name);
+}
 document.addEventListener('change', function () {
     let chek = event.target; 
     if (chek.tagName === 'INPUT' && chek.type === 'checkbox') {
