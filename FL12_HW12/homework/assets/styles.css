@@ -42,8 +42,6 @@ button#add{
 button:hover{
     box-shadow: 1px 5px 5px 3px #727272;
 }
-
-}
 h2{
     font-style: italic;
 	font-size:0.8rem;

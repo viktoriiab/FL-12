@@ -5,7 +5,8 @@ const rootNode = document.getElementById('root');
 rootNode.insertAdjacentHTML('afterbegin', '<button id="add" type="button" onclick= "addItem();">Add New</button>');
 //rootNode.insertAdjacentHTML('afterbegin', '<input type="text" id="t" size="40">');
 //tNode.insertAdjacentHTML('beforeend', '<h1></h1>');
-rootNode.insertAdjacentHTML('beforeend', `<div id='container' class='container'><h2 id="list_title"></h2><ul id='list'></ul></div>`);
+rootNode.insertAdjacentHTML('beforeend', `<div id='container' class='container'>
+<h2 id="list_title"></h2><ul id='list'></ul></div>`);
 //localStorage.setItem('Game of', 'Современные браузеры он более полнофункциональный,');
 //localStorage.setItem('Name2', 'Современо менее поддерживаемый. Существуют');
 //localStorage.clear();
@@ -69,7 +70,6 @@ function loadList(){
         term.chk = JSON.parse( localStorage.getItem(key) ).checkbox;
         terms.push(term);
         }
-        console.log(terms);
         renderList(terms);
     } 
 }
@@ -79,7 +79,12 @@ function loadPage(_location){
     loadList();
 }
 addEventListener('load',loadPage('main'));
-
+function clearInputs(){
+    let inputs = document.querySelectorAll('input.input_term');
+    inputs.forEach(el => {
+        el.value = '';
+    });
+}
 function addItem(){
     location.hash = 'add';
     document.getElementById('container').classList.add('hidden');
@@ -92,7 +97,7 @@ function addItem(){
         </div>
         <div class='add_buttons'>
         <button id="addTerm" type='button'>Add term</button>
-        <button id="clear" type="button">Remove</button>
+        <button id="clear" type="button" onclick='clearInputs();'>Remove</button>
         <button id="cancel" type="button">Cancel</button>
         </div>
         </div>
@@ -104,8 +109,7 @@ function deleteItem(){
     localStorage.removeItem(event.target.name);
 }
 document.addEventListener('change', function () {
-    let chek = event.target; 
-    console.log(event);
+    let chek = event.target;
     if (chek.tagName === 'INPUT' && chek.type === 'checkbox' && chek.checked === true) {
         let item = document.getElementById(chek.name);
         document.getElementById('list').insertAdjacentElement('beforeend',item);
