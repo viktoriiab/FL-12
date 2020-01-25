@@ -2,7 +2,7 @@ const rootNode = document.getElementById('root');
 
 
 
-rootNode.insertAdjacentHTML('afterbegin', '<button id="add" type="button" onclick= "addItem();">Add New</button>');
+rootNode.insertAdjacentHTML('afterbegin', '<button id="add" type="button" onclick= "addPage();">Add New</button>');
 //rootNode.insertAdjacentHTML('afterbegin', '<input type="text" id="t" size="40">');
 //tNode.insertAdjacentHTML('beforeend', '<h1></h1>');
 rootNode.insertAdjacentHTML('beforeend', `<div id='container' class='container'>
@@ -31,30 +31,19 @@ function checkbox(chk){
         return '';
     }
 }
-function renderList(list){
-    
-    for(let i = 0; i < list.length; i++){
-        if(list[i].chk === false){
-            document.getElementById('list').insertAdjacentHTML('afterbegin', `
-            <li id='${list[i].key}'>
-            <div class='term'><h3>${list[i].key} : </h3>
-            <p>${list[i].value}</p></div>
-            <input type='checkbox' name='${list[i].key}' ${checkbox(list[i].chk)}/>
-            <div><button>Edit</button>
-            <button name='${list[i].key}' onclick='deleteItem();'>Remove</button>
-            </div></li>`);
-        }else{
-            document.getElementById('list').insertAdjacentHTML('beforeend', `
-            <li id='${list[i].key}'>
-            <div class='term'><h3>${list[i].key} : </h3>
-            <p>${list[i].value}</p></div>
-            <input type='checkbox' name='${list[i].key}' ${checkbox(list[i].chk)}/>
-            <div><button>Edit</button>
-            <button name='${list[i].key}' onclick='deleteItem();'>Remove</button></div></li>`);
-        }
-        
-    }
+function renderItem(key,val,chk){
+    let htmlItem = `
+    <li id='${key}'>
+                <div class='term'><h3>${key} : </h3>
+                <p>${val}</p></div>
+                <input type='checkbox' name='${key}' ${checkbox(chk)}/>
+                <div><button>Edit</button>
+                <button name='${key}' onclick='deleteItem();'>Remove</button>
+                </div></li>
+    `;
+    return htmlItem;
 }
+
 function loadList(){
     let terms = [];
     if(!localStorage.length){
@@ -70,7 +59,15 @@ function loadList(){
         term.chk = JSON.parse( localStorage.getItem(key) ).checkbox;
         terms.push(term);
         }
-        renderList(terms);
+        for(let i = 0; i < terms.length; i++){
+            if(terms[i].chk === false){
+                document.getElementById('list').insertAdjacentHTML('afterbegin', 
+                renderItem(terms[i].key,terms[i].value,terms[i].chk));
+            }else{
+                document.getElementById('list').insertAdjacentHTML('beforeend', 
+                renderItem(terms[i].key,terms[i].value,terms[i].chk));
+            }
+        }
     } 
 }
 
@@ -78,27 +75,58 @@ function loadPage(_location){
     location.hash = _location;
     loadList();
 }
-addEventListener('load',loadPage('main'));
+function home(){
+    location.hash = 'main';
+    document.getElementById('AddPage').classList.add('hidden');
+    document.getElementById('container').classList.remove('hidden');
+    document.getElementById('add').classList.remove('hidden');
+
+}
+function addItem(){
+    let termInfo = {};
+  
+    if( document.getElementById('termName').value !== '' ){
+        termInfo.name = document.getElementById('termName').value;
+    }else{
+        alert('Please, fill name of term!');
+    }
+    console.log(document.getElementById('definition').value);
+    termInfo.val = document.getElementById('definition').value;
+
+    localStorage.setItem(termInfo.name,JSON.stringify({name: termInfo.name, val: termInfo.val, checkbox: false}));
+
+    let firstCheckbox = document.querySelector('input[checked]');
+    if(firstCheckbox){
+        document.getElementById(firstCheckbox.name).insertAdjacentHTML('beforebegin', 
+        renderItem(termInfo.name,termInfo.val,false));
+    }else{
+        document.getElementById('list').insertAdjacentHTML('afterbegin', 
+        renderItem(termInfo.name,termInfo.val,false));
+    }
+    home();
+}
+
+
 function clearInputs(){
     let inputs = document.querySelectorAll('input.input_term');
     inputs.forEach(el => {
         el.value = '';
     });
 }
-function addItem(){
+function addPage(){
     location.hash = 'add';
     document.getElementById('container').classList.add('hidden');
     document.getElementById('add').classList.add('hidden');
     rootNode.insertAdjacentHTML('afterbegin',`
-        <div class='container'>
+        <div id='AddPage' class='container'>
         <div class='inputs_term'>
-        <input type='text' name='termName' class='input_term' placeholder='Enter term'>
-        <input type='text' name=''definition class='input_term' placeholder='Enter definition'>
+        <input type='text' id='termName' class='input_term' placeholder='Enter term'>
+        <input type='text' id='definition' class='input_term' placeholder='Enter definition'>
         </div>
         <div class='add_buttons'>
-        <button id="addTerm" type='button'>Add term</button>
+        <button id="addTerm" type='button' onclick='addItem();'>Add term</button>
         <button id="clear" type="button" onclick='clearInputs();'>Remove</button>
-        <button id="cancel" type="button">Cancel</button>
+        <button id="cancel" type="button" onclick='home();'>Cancel</button>
         </div>
         </div>
     `);
@@ -110,12 +138,10 @@ function deleteItem(){
 }
 document.addEventListener('change', function () {
     let chek = event.target;
-    if (chek.tagName === 'INPUT' && chek.type === 'checkbox' && chek.checked === true) {
-        let item = document.getElementById(chek.name);
+    let item = document.getElementById(chek.name);
+    if (chek.tagName === 'INPUT' && chek.type === 'checkbox' && chek.checked === true) {    
         document.getElementById('list').insertAdjacentElement('beforeend',item);
-        
-        let keys = Object.keys(localStorage);
-        
+        let keys = Object.keys(localStorage);  
         for(let key of keys) {
             if(JSON.parse( localStorage.getItem(key) ).name === chek.name){
                let args = localStorage.getItem(key);
@@ -124,11 +150,12 @@ document.addEventListener('change', function () {
                localStorage.setItem(key, JSON.stringify(args));
             }
         }
+        chek.setAttribute('checked','checked');
     }
 
-    if(chek.tagName === 'INPUT' && chek.checked === false){
-        let keys = Object.keys(localStorage);
-        
+    if(chek.tagName === 'INPUT' && chek.type === 'checkbox' && chek.checked === false){
+        document.getElementById('list').insertAdjacentElement('afterbegin',item);
+        let keys = Object.keys(localStorage);  
         for(let key of keys) {
             if(JSON.parse( localStorage.getItem(key) ).name === chek.name){
                let args = localStorage.getItem(key);
@@ -137,5 +164,8 @@ document.addEventListener('change', function () {
                localStorage.setItem(key, JSON.stringify(args));
             }
         }
+        chek.removeAttribute('checked');
     }
   });
+
+  addEventListener('load',loadPage('main'));
