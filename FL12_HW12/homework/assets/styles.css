@@ -75,11 +75,12 @@ li .term{
     align-self: baseline;
 }
 li:hover{
-    /*box-shadow:-10px -10px 0px 0px rgba(100,100,100,.1);*/
     background: #9f3e3e;
 }
-
-input[type=checkbox] {
+label{
+    align-self: flex-end;
+}
+input[type=checkbox]{
     align-self: flex-end;
     width: 15px;
     height: 15px;
