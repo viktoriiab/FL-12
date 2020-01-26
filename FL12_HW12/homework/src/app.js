@@ -1,5 +1,6 @@
 const _null = 0;
 let newTerm = {};
+let modTerm = null;
 let counterSet = localStorage.length;
 
 function checkbox(chk){
@@ -8,12 +9,6 @@ function checkbox(chk){
     }else{
         return '';
     }
-}
-function clearInputs(){
-    let inputs = document.querySelectorAll('input.input_term');
-    inputs.forEach(el => {
-        el.value = '';
-    });
 }
 function getElement(node,id){
     let i;
@@ -26,11 +21,11 @@ function getElement(node,id){
 }
 function renderTerm(id,name,val,chk){
     let htmlItem = `<li id='${id}'><div class='term'>
-    <h3>${name} : </h3><p>${val}</p></div>
+    <h3>${name}</h3><p>${val}</p></div>
     <input type='checkbox' name='${id}' ${checkbox(chk)} />
-    <div><a href='#modify'>Edit</a>
+    <a href='#/modify/:item' class='edit'>Edit</a>
     <button name='${id}' onclick='deleteTerm();'>Remove</button>
-    </div></li>
+    </li>
     `;
     return htmlItem;
 }
@@ -42,35 +37,14 @@ function deleteTerm(){
         document.getElementById('list_title').innerText = 'Constructor of terms. List of terms is empty';
     }
 }
-function addTerm(){
-    let _new = true;
-    let termInfo = {};
-    let valNull = true;
-    let valName = document.getElementById('termName').value;
-    if( valName !== '' ){
-        termInfo.name = valName;
-        valNull = false;
-    }else{
-        alert('Please, fill name of term!');
-    }
 
-    if(!valNull){
-        termInfo.id = counterSet;
-        counterSet++;
-        termInfo.val = document.getElementById('definition').value;
-        newTerm.isNew = _new;
-        newTerm.info = termInfo;
-        location.hash = '#main';
-    }
-
-}
-function getContent(pageId, callback, action){
+function getContent(pageId, callback){
     function main(){
         let terms = [];
         let node = document.createElement('div');
         node.setAttribute('id','container');
         node.setAttribute('class','container');
-        node.insertAdjacentHTML('beforeend',`<a href='#add'>Add new</a>
+        node.insertAdjacentHTML('beforeend',`<a href='#add' id='addBtn'>Add new</a>
         <h2 id='list_title'></h2><ul id='list' class='list'></ul>`);
 
                 if(!localStorage.length){
@@ -97,15 +71,14 @@ function getContent(pageId, callback, action){
                         renderTerm(term.id, term.name,term.value,term.chk));
                     }
                 });
-
-               
                 if(newTerm.isNew){
                     let firstCheckbox = node.querySelector('input[checked]');
-                    if(firstCheckbox){
-                        getElement(getElement(node,'list'),firstCheckbox.name).insertAdjacentHTML('beforebegin', 
+                    if(!firstCheckbox){
+                        node.querySelector('.list').insertAdjacentHTML('afterbegin',
                         renderTerm(newTerm.info.id, newTerm.info.name,newTerm.info.val,false));
                     }else{
-                        getElement(getElement(node,'list'),firstCheckbox.name).insertAdjacentHTML('afterbegin', 
+                        console.log(node.querySelector('.list'));
+                        getElement(getElement(node,'list'),firstCheckbox.name).insertAdjacentHTML('beforebegin', 
                         renderTerm(newTerm.info.id, newTerm.info.name,newTerm.info.val,false));
                     }
                     localStorage.setItem(newTerm.info.id,JSON
@@ -121,49 +94,60 @@ function getContent(pageId, callback, action){
         node.setAttribute('class','container');
         node.insertAdjacentHTML('afterbegin',`       
         <h2>Add new term</h2>
+        <form id='f'>
         <div class='inputs_term'>
             <input type='text' id='termName' class='input_term' placeholder='Enter term'>
             <input type='text' id='definition' class='input_term' placeholder='Enter definition'>
         </div>
         <div class='add_buttons'>
-            <button id="addTerm" type='button' onclick='addTerm();'>Add term</button>
-            <button id="clear" type="button" onclick='clearInputs();'>Remove</button>
+            <button id='addT' type='submit'>Add term</button>
+            <button id="clear" type="reset">Remove</button>
             <a href='#main'>Cancel</a> 
         </div>
+        </form>
         
     `);
+
         return node.outerHTML;
     }
     function modify(){
-        //пройтись по 
+        let info = {};
+        if(modTerm){
+            info.name = modTerm.querySelector('h3').textContent;
+            info.def = modTerm.querySelector('p').textContent;
+        }
         let node = document.createElement('div');
         node.setAttribute('editpage','container');
         node.setAttribute('class','container');
         node.insertAdjacentHTML('afterbegin',`
         <h2>Edit term</h2>
+        <form>
         <div class='inputs_term'>
-            <input type='text' id='termName' class='input_term' value=''>
-            <input type='text' id='definition' class='input_term' value=''>
+            <input type='text' id='termName' class='input_term' value='${info.name}'>
+            <input type='text' id='definition' class='input_term' value='${info.def}'>
         </div>
-        <div class='add_buttons'>
-            <button id="addTerm" type='button' onclick='saveItem();'>Save changes</button>
+
+            <button type='button' id='save'>Save changes</button>
             <a href='#main'>Cancel</a>
-        </div>
+
+        </form>
         `); 
+        Location.host = 'item';
         return node.outerHTML;
     }
+
     let pages = {
     main: `${main()}`,
     add: `${add()}`,
-    modify: `${modify()}`
+    '/modify/:item': `${modify()}`
     };
+
     callback(pages[pageId]);
   }
 
 function navigate(){
     let rootNode = document.getElementById('root'),
     pageId = location.hash.substr(1);
-
     getContent(pageId, function (content) {
         rootNode.innerHTML = content;
     });
@@ -176,176 +160,18 @@ if(!location.hash) {
 navigate();
 
 window.addEventListener('hashchange', navigate);
-window.addEventListener('click', function () {
-    console.log(event);
-});
-window.addEventListener('change', function () {
-    console.log(event);
-    let chek = event.target;
-    let item = document.getElementById(chek.name);
-    if (chek.tagName === 'INPUT' && chek.type === 'checkbox' && chek.checked === true) {    
-        document.getElementById('list').insertAdjacentElement('beforeend',item);
-        let keys = Object.keys(localStorage);  
-        for(let key of keys) {
-            if(key === chek.name){
-               let args = localStorage.getItem(key);
-               args = args ? JSON.parse(args) : {};
-               args['checkbox'] = true;
-               localStorage.setItem(key, JSON.stringify(args));
-            }
-        }
-        chek.setAttribute('checked','checked');
+window.addEventListener('click', function (e) {
+    if (e.target.className === 'edit') {
+        modTerm = e.target.parentNode;
     }
-    if(chek.tagName === 'INPUT' && chek.type === 'checkbox' && chek.checked === false){
-        document.getElementById('list').insertAdjacentElement('afterbegin',item);
-        let keys = Object.keys(localStorage);  
-        for(let key of keys) {
-            if(key === chek.name){
-               let args = localStorage.getItem(key);
-               args = args ? JSON.parse(args) : {};
-               args['checkbox'] = false;
-               localStorage.setItem(key, JSON.stringify(args));
-            }
-        }
-        chek.removeAttribute('checked');
-    }
-});
-/*
-rootNode.insertAdjacentHTML('afterbegin', '<button id="add" type="button" onclick= "addPage();">Add New</button>');
-rootNode.insertAdjacentHTML('beforeend', `<div id='container' class='container'>
-<h2 id="list_title"></h2><ul id='list'></ul></div>`);
-rootNode.insertAdjacentHTML('afterbegin',`
-        <div id='addpage' class='container hidden'>
-        <h2>Add new term</h2>
-        <div class='inputs_term'>
-            <input type='text' id='termName' class='input_term' placeholder='Enter term'>
-            <input type='text' id='definition' class='input_term' placeholder='Enter definition'>
-        </div>
-        <div class='add_buttons'>
-            <button id="addTerm" type='button' onclick='addTerm();'>Add term</button>
-            <button id="clear" type="button" onclick='clearInputs();'>Remove</button>
-            <button id="cancel" type="button" onclick="home('addpage');">Cancel</button>
-        </div>
-        </div>
-    `);
-function checkbox(chk){
-    if(chk){
-        return 'checked=\'checked\'';
-    }else{
-        return '';
-    }
-}
-function renderItem(id,name,val,chk){
-    let htmlItem = `
-    <li id='${id}'>
-    <div class='term'>
-      <h3>${name} : </h3>
-      <p>${val}</p>
-    </div>
-    <input type='checkbox' name='${id}' ${checkbox(chk)} />
-    <div><button name='${id}' onclick='editItem();'>Edit</button>
-      <button name='${id}' onclick='deleteItem();'>Remove</button>
-    </div>
-    </li>
-    `;
-    return htmlItem;
-}
-function loadList(){
-    let terms = [];
-    if(!localStorage.length){
-        document.getElementById('list_title').innerText = 'Constructor of terms. List of terms is empty';
-    }else{
-        document.getElementById('list_title').innerText = 'Constructor of terms. List of terms:';
-        let keys = Object.keys(localStorage);
-        
-        for(let key of keys) {
-        let term = {};
-        term.id = key;
-        term.name = JSON.parse( localStorage.getItem(key) ).name;
-        term.value = JSON.parse( localStorage.getItem(key) ).val;
-        term.chk = JSON.parse( localStorage.getItem(key) ).checkbox;
-        terms.push(term);
-        }
-        for(let i = 0; i < terms.length; i++){
-            if(terms[i].chk === false){
-                document.getElementById('list').insertAdjacentHTML('afterbegin', 
-                renderItem(terms[i].id, terms[i].name,terms[i].value,terms[i].chk));
-            }else{
-                document.getElementById('list').insertAdjacentHTML('beforeend', 
-                renderItem(terms[i].id, terms[i].name,terms[i].value,terms[i].chk));
-            }
-        }
-    } 
-}
-function loadPage(_location){
-    location.hash = _location;
-    loadList();
-    
-}
-function home(page){
-    location.hash = 'main';
-    document.getElementById(page).classList.add('hidden');
-    document.getElementById('container').classList.remove('hidden');
-    document.getElementById('add').classList.remove('hidden');
+    if (e.target.id === 'save') {
+        let termInfo = {};
 
-}
-function addTerm(){
-    let termInfo = {};
-    let valNull = true;
-    let valName = document.getElementById('termName').value;
-    if( valName !== '' ){
-        termInfo.name = valName;
-        valNull = false;
-    }else{
-        alert('Please, fill name of term!');
-    }
-
-    if(!valNull){
-        console.log(counterSet);
-        termInfo.id = counterSet;
-        counterSet++;
-        termInfo.val = document.getElementById('definition').value;
-        localStorage.setItem(termInfo.id,JSON.stringify({name: termInfo.name, val: termInfo.val, checkbox: false}));
-    
-        let firstCheckbox = document.querySelector('input[checked]');
-        if(firstCheckbox){
-            document.getElementById(firstCheckbox.name).insertAdjacentHTML('beforebegin', 
-            renderItem(termInfo.id, termInfo.name,termInfo.val,false));
-        }else{
-            document.getElementById('list').insertAdjacentHTML('afterbegin', 
-            renderItem(termInfo.id, termInfo.name,termInfo.val,false));
-        }
-        home('addpage');
-    }
-}
-function clearInputs(){
-    let inputs = document.querySelectorAll('input.input_term');
-    inputs.forEach(el => {
-        el.value = '';
-    });
-}
-function addPage(){
-    location.hash = 'add';
-    document.getElementById('container').classList.add('hidden');
-    document.getElementById('add').classList.add('hidden');
-    document.getElementById('addpage').classList.remove('hidden');
-    clearInputs();
-}
-function saveItem(termId){
-    let termInfo = {};
-    let valNull = true;
-    let valName = document.getElementById('termName').value;
-    if( valName !== '' ){
-        termInfo.name = valName;
-        valNull = false;
-    }else{
-        alert('Please, fill name of term!');
-    }
-    if(!valNull){
+        termInfo.name = document.getElementById('termName').value;
         termInfo.val = document.getElementById('definition').value;
         let keys = Object.keys(localStorage);  
             for(let key of keys) {
-                if(key === termId.toString()){
+                if(key === modTerm.id.toString()){
                   let args = localStorage.getItem(key);
                     args = args ? JSON.parse(args) : {};
                     args['name'] = termInfo.name;
@@ -353,40 +179,31 @@ function saveItem(termId){
                     localStorage.setItem(key, JSON.stringify(args));
                 }
             }
-            document.getElementById(termId.toString()).getElementsByTagName('h3')[_null].innerText = termInfo.name;
-            document.getElementById(termId.toString()).getElementsByTagName('p')[_null].innerText = termInfo.val;
-        home('editpage');
-        document.getElementById('editpage').remove();
-    } 
-}
-function editItem(){
-    location.hash = 'modify/:item';
-    let item = document.getElementById(event.target.name);
-    document.getElementById('container').classList.add('hidden');
-    document.getElementById('add').classList.add('hidden');
-    rootNode.insertAdjacentHTML('afterbegin',`
-    <div id='editpage' class='container'>
-    <h2>Edit term</h2>
-    <div class='inputs_term'>
-      <input type='text' id='termName' class='input_term' value='${item.getElementsByTagName('h3')[_null].innerText}'>
-      <input type='text' id='definition' class='input_term' value='${item.getElementsByTagName('p')[_null].innerText}'>
-    </div>
-    <div class='add_buttons'>
-      <button id="addTerm" type='button' onclick='saveItem(${item.id});'>Save changes</button>
-      <button id="cancel" type="button" onclick="home('editpage');">Cancel</button>
-    </div>
-    </div>
-    `); 
-}
-function deleteItem(){
-    let item = document.getElementById(event.target.name);
-    item.remove();
-    localStorage.removeItem(event.target.name);
-    if(localStorage.length === _null){
-        document.getElementById('list_title').innerText = 'Constructor of terms. List of terms is empty';
+        location.hash = 'main';
     }
-}
-document.addEventListener('change', function () {
+});
+window.addEventListener('submit', function(e){
+    let _new = true;
+    let termInfo = {};
+    let valNull = true;
+    let valName = document.getElementById('termName').value;
+    if( valName !== '' ){
+        termInfo.name = valName;
+        valNull = false;
+    }else{
+        alert('Please, fill name of term!');
+    }
+
+    if(!valNull){
+        termInfo.id = counterSet;
+        counterSet++;
+        termInfo.val = document.getElementById('definition').value;
+        newTerm.isNew = _new;
+        newTerm.info = termInfo;
+        location.hash = '#main';
+    }
+ });
+window.addEventListener('change', function () {
     let chek = event.target;
     let item = document.getElementById(chek.name);
     if (chek.tagName === 'INPUT' && chek.type === 'checkbox' && chek.checked === true) {    
@@ -415,7 +232,4 @@ document.addEventListener('change', function () {
         }
         chek.removeAttribute('checked');
     }
-  });
-  addEventListener('load',loadPage('main'));
-
-  */
+});

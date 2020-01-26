@@ -26,9 +26,22 @@ h1 {
     letter-spacing:0.05em;
     border-bottom:1px solid rgba(182, 164, 164, 0.3); 
 }
+#addBtn{
+    float: right;
+}
+a{
+    text-decoration: none;
+    padding:0.5em 1.5em;	
+    text-transform:uppercase;
+    font-weight:bold;
+    border:1px solid rgba(255,255,255,.3);
+    color: #FF6666;
+    cursor: pointer;
+    background: white;
+    font-size: 0.7em;
+}
 button {
-	padding:0.5em 1.5em;
-	
+	padding:0.5em 1.5em;	
 	text-transform:uppercase;
 	font-weight:bold;
     border:1px solid rgba(255,255,255,.3);
@@ -42,7 +55,7 @@ button#add{
     background:#FF6666;
     color:white;
 }
-button:hover{
+button:hover, a:hover{
     box-shadow: 1px 5px 5px 3px #727272;
 }
 h2{
@@ -64,11 +77,8 @@ ul{
     list-style: none;
 }
 ul li{
-    display: flex;
-    flex-direction: column;
     margin: 1em 0.1em;
     padding: 0.7em;
-	align-items:center;
 	background:rgba(255,255,255,0.1);
 }
 p{
@@ -80,18 +90,14 @@ li .term{
 li:hover{
     background: #9f3e3e;
 }
-label{
-    align-self: flex-end;
-}
+
 input[type=checkbox]{
     align-self: flex-end;
     width: 15px;
     height: 15px;
     margin-right: 1em;
 }
-.hidden{
-    display: none;
-}
+
 .inputs_term{
     display: flex;
     justify-content: space-around;
@@ -117,7 +123,5 @@ input[type=checkbox]{
     align-items: center;
 }
 .add_buttons{
-    display: flex;
-    justify-content: space-around;
-    margin: 3em 3em;
+    text-align: center;
 }
