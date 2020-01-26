@@ -3,6 +3,9 @@
     padding: 0;
     box-sizing: border-box;
 }
+#navbar a.active{
+    border-color: gray;
+}
 #root{
     max-width: 1400px;
     display: flex;
